@@ -18,14 +18,14 @@ def convert_to_parquet(spark):
         .option("header", "true") \
         .option("delimiter", ",") \
         .option("inferSchema", "true") \
-        .load("s3://bdmtest0909/indian_food.csv")
+        .load("s3://emrsourcedata/indian_food.csv")
 
     write_parquet(df_csv)
 
 def write_parquet(df_csv):
     df_csv.write \
         .format("parquet") \
-        .save("s3://bdmtest0909/output/", mode="overwrite")
+        .save("s3://bdmtest0909/outputlambdaemr/", mode="overwrite")
 
 
 if __name__ == "__main__":
